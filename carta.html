@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ruth ❤️</title>
+
+<style>
+body {
+    background: #FFF5F7;
+    color: #2C3E50;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+h1 {
+    color: #E74C3C;
+    margin-top: 30px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#contador {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #C0392B;
+    background: white;
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px auto;
+    max-width: 800px;
+}
+
+.galeria img {
+    width: 140px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: white;
+    padding: 10px 10px 25px 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.galeria img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+button {
+    background-color: #E74C3C;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 30px;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+button:hover {
+    background-color: #C0392B;
+    transform: translateY(-2px);
+}
+
+#pregunta {
+    margin-top: 30px;
+    padding-bottom: 50px;
+}
+
+.mensaje-final {
+    color: #E74C3C;
+    animation: latido 1s infinite;
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Ruty ❤️</h1>
+
+<p>
+Desde que comenzamos a hablar mi vida fue un quilombo pero...<br>
+Me gusta el quilombo y te sigo eligiendo hoy en día.<br>
+Gracias por aguantarme desde el <br>
+<strong>4 de diciembre de 2024</strong>
+</p>
+
+<div id="contador">Cargando tiempo...</div>
+
+<h3>Nuestros recuerdos</h3>
+
+<div class="galeria">
+    <img src="foto1.jpeg">
+    <img src="foto2.jpeg">
+    <img src="foto3.jpeg">
+    <img src="foto4.jpeg">
+    <img src="foto5.jpeg">
+</div>
+
+<button onclick="pregunta()">Pregunta decisiva :/ ❤️</button>
+
+<div id="pregunta"></div>
+
+<script>
+
+const fechaInicio = new Date("2024-12-04T00:00:00");
+
+function actualizarContador() {
+    const ahora = new Date();
+    const diff = ahora - fechaInicio;
+
+    const segundos = Math.floor(diff / 1000) % 60;
+    const minutos = Math.floor(diff / (1000 * 60)) % 60;
+    const horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("contador").innerHTML =
+        dias + " días, " + horas + "h " + minutos + "m " + segundos + "s ❤️";
+}
+
+setInterval(actualizarContador, 1000);
+actualizarContador();
+
+function pregunta() {
+    document.getElementById("pregunta").innerHTML = `
+        <h2>¿Te gustaría seguir formando parte de mi vida?</h2>
+        <button onclick="si()">Sí ❤️</button>
+        <button onclick="no()">No</button>
+    `;
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+function si() {
+    document.getElementById("pregunta").innerHTML =
+        "<h2 class='mensaje-final'>Sabía que dirías que sí ❤️ Te quiero.</h2>";
+}
+
+function no() {
+    let botones = "";
+    for (let i = 0; i < 12; i++) {
+        botones += `<button onclick="si()">Sí ❤️</button>`;
+    }
+
+    document.getElementById("pregunta").innerHTML = `
+        <h2>¿Cómo que no pendeja? 😠</h2>
+        <p>No tenés opción...</p>
+        ${botones}
+    `;
+}
+
+</script>
+
+</body>
+</html>
